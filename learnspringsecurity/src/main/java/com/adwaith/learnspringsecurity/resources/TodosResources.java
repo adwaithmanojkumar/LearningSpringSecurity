@@ -1,5 +1,6 @@
 package com.adwaith.learnspringsecurity.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -29,9 +30,12 @@ public class TodosResources {
 	}
 	
 	@PostMapping("/users/{username}/todos")
-	public void addTodo(@PathVariable("username") String username,@RequestBody Todo todo) {
+	public List<Todo> addTodo(@PathVariable("username") String username,@RequestBody Todo todo) {
 		logger.info("Created new todo {} for {}",todo,username);
-		TODOS_LIST.add(todo);
+		List<Todo> newList = new ArrayList<>(TODOS_LIST);
+		newList.add(todo);
+		
+		return newList;
 	}
 }
 

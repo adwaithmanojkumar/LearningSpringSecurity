@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@RestController
+//@RestController
 public class CsrfTokenResource {
 	
 	@GetMapping("/csrf_token")
