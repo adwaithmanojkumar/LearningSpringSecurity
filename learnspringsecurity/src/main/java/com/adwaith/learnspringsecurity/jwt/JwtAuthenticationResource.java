@@ -24,7 +24,7 @@ public class JwtAuthenticationResource {
 
 	private String createToken(Authentication authentication) {
 		var claims = JwtClaimsSet.builder().issuer("self").issuedAt(Instant.now())
-				.expiresAt(Instant.now().plusSeconds(60 * 30)).subject(authentication.getName())
+				.expiresAt(Instant.now().plusSeconds(60 * 60)).subject(authentication.getName())
 				.claim("scope", createScope(authentication)).build();
 
 		return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
